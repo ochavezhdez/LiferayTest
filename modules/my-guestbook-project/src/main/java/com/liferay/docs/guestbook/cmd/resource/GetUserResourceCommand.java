@@ -36,7 +36,7 @@ public class GetUserResourceCommand extends BaseMVCResourceCommand {
 			JSONObject userJSON = JSONFactoryUtil.createJSONObject();
 			userJSON.put("id", user.getUserId());
 			userJSON.put("name", user.getFullName());
-			userJSON.put("username", user.getUserUuid());
+			userJSON.put("uuid", user.getUserUuid());
 			userJSON.put("email", user.getEmailAddress());
 			resourceResponse.getWriter().print(userJSON);
 		} catch (Exception e) {

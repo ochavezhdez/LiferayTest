@@ -15,7 +15,8 @@
 <liferay-portlet:resourceURL id="getUsers" var="getUsersVar"></liferay-portlet:resourceURL>
 <liferay-portlet:resourceURL id="getUser" var="getUserVar"></liferay-portlet:resourceURL>
 
-<aui:form action="<%=saveUserkVar%>" cssClass="container-fluid-1280" method="post" name="fromGuestBook">
+<aui:form action="<%=saveUserkVar%>" cssClass="container-fluid-1280"
+	method="post" name="fromGuestBook">
 	<aui:fieldset-group markupView="lexicon">
 		<aui:fieldset label="Personal Information">
 			<aui:row>
@@ -28,7 +29,7 @@
 			</aui:row>
 			<aui:row>
 				<aui:col width="50">
-					<aui:input label="Username" name="username" type="text" />
+					<aui:input label="uuid" name="uuid" type="text" />
 				</aui:col>
 				<aui:col width="50">
 					<aui:input label="Email" name="email" type="email" />
@@ -49,8 +50,8 @@
 </aui:form>
 
 <aui:script>
-AUI().use('aui-io-request', function(A) {
-    A.io.request('${getUsersVar}', {
+AUI().use('aui-io-request', function(getUsers) {
+    getUsers.io.request('${getUsersVar}', {
         method: 'get',
         sync: true,
         on: {
@@ -72,8 +73,8 @@ AUI().use('aui-io-request', function(A) {
 });
 
 $("#<portlet:namespace />users").change(function() {
-	AUI().use('aui-io-request', function(A) {
-		A.io.request('${getUserVar}', {
+	AUI().use('aui-io-request', function(getUser) {
+		getUser.io.request('${getUserVar}', {
 			method: 'get',
 			data: {
 				<portlet:namespace />userId: $("#<portlet:namespace />users").val(),
@@ -85,7 +86,7 @@ $("#<portlet:namespace />users").change(function() {
 					var result = this.get('responseData');
 					$("#<portlet:namespace />id").val(result.id);
 					$("#<portlet:namespace />name").val(result.name);
-					$("#<portlet:namespace />username").val(result.username);
+					$("#<portlet:namespace />uuid").val(result.uuid);
 					$("#<portlet:namespace />email").val(result.email);
 				}
 			}
