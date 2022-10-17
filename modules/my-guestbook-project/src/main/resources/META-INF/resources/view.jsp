@@ -54,10 +54,11 @@ AUI().use('aui-io-request', function(getUsers) {
     getUsers.io.request('${getUsersVar}', {
         method: 'get',
         sync: true,
+        dataType: 'json',
         on: {
             success: function() {},
             end: function() {
-                var userList = JSON.parse(this.get('responseData'));
+                var userList = this.get('responseData');
                 if (userList.length === 0) {
                     $("#error").empty();
                     $("#error").html("No Users found");
@@ -76,6 +77,7 @@ $("#<portlet:namespace />users").change(function() {
 	AUI().use('aui-io-request', function(getUser) {
 		getUser.io.request('${getUserVar}', {
 			method: 'get',
+			sync: true,
 			data: {
 				<portlet:namespace />userId: $("#<portlet:namespace />users").val(),
 			},
