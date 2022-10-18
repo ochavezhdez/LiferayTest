@@ -1,4 +1,10 @@
+<%@ page import="com.liferay.portal.kernel.model.User"%>
+<%@ page import="java.util.List"%>
 <%@ include file="/init.jsp"%>
+
+<%
+List<User> userList = (List<User>) request.getAttribute("userList");
+%>
 
 <liferay-portlet:actionURL name="saveUser" var="saveUserkVar">
 </liferay-portlet:actionURL>
@@ -39,7 +45,11 @@
 	</aui:fieldset-group>
 	<aui:fieldset-group markupView="lexicon">
 		<aui:fieldset label="Miscellaneous">
-			<aui:select name="users"></aui:select>
+			<aui:select name="users">
+				<c:forEach items="${userList}" var="user">
+					<aui:option value="${user.userId}">${user.fullName}</aui:option>
+				</c:forEach>
+			</aui:select>
 		</aui:fieldset>
 	</aui:fieldset-group>
 	<aui:button-row>
@@ -50,29 +60,6 @@
 </aui:form>
 
 <aui:script>
-AUI().use('aui-io-request', function(getUsers) {
-    getUsers.io.request('${getUsersVar}', {
-        method: 'get',
-        sync: true,
-        dataType: 'json',
-        on: {
-            success: function() {},
-            end: function() {
-                var userList = this.get('responseData');
-                if (userList.length === 0) {
-                    $("#error").empty();
-                    $("#error").html("No Users found");
-                    $("#error").addClass("alert");
-                } else {
-                    $.each(userList, function(index, value) {
-                        $("#<portlet:namespace />users").append('<option value="' + value.id + '">' + value.name + '</option>');
-                    });
-                }
-            }
-        }
-    });
-});
-
 $("#<portlet:namespace />users").change(function() {
 	AUI().use('aui-io-request', function(getUser) {
 		getUser.io.request('${getUserVar}', {
