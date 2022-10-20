@@ -1,11 +1,18 @@
 package com.liferay.student.portlet;
 
+import java.io.IOException;
+
 import javax.portlet.Portlet;
+import javax.portlet.PortletException;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.student.constants.StudentPortletKeys;
+import com.liferay.student.service.StudentLocalService;
 
 /**
  * @author osvel
@@ -26,5 +33,14 @@ import com.liferay.student.constants.StudentPortletKeys;
 	service = Portlet.class
 )
 public class StudentPortlet extends MVCPortlet {
+	
+	@Reference
+    private StudentLocalService studentLocalService;
+ 
+    @Override
+    public void render(RenderRequest renderRequest, RenderResponse renderResponse) throws IOException, PortletException {
+        renderRequest.setAttribute("studentLocalService", studentLocalService);
+        super.render(renderRequest, renderResponse);
+    }
 
 }

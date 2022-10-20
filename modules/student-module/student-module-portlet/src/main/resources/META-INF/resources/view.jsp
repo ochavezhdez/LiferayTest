@@ -1,4 +1,3 @@
-<%@ page import="com.liferay.student.service.StudentLocalServiceUtil"%>
 <%@ include file="/init.jsp"%>
 
 <portlet:renderURL var="addStudentRenderURL">
@@ -10,9 +9,9 @@
 	value="Add Student" />
 
 <liferay-ui:search-container emptyResultsMessage="Students don't found"
-	total="<%=StudentLocalServiceUtil.getStudentsCount()%>">
+	total="${ studentLocalService.getStudentsCount() }">
 	<liferay-ui:search-container-results
-		results="<%=StudentLocalServiceUtil.getStudents(searchContainer.getStart(), searchContainer.getEnd())%>" />
+		results="${ studentLocalService.getStudents(searchContainer.getStart(), searchContainer.getEnd()) }" />
 	<liferay-ui:search-container-row
 		className="com.liferay.student.model.Student" escapedModel="true"
 		keyProperty="studentId" modelVar="student">
@@ -32,14 +31,15 @@
 				<portlet:renderURL var="updateStudentRenderURL">
 					<liferay-portlet:param name="mvcRenderCommandName"
 						value="saveStudentRender" />
-					<portlet:param name="studentId" value="${student.studentId}" />
+					<portlet:param name="studentId" value="${ student.studentId }" />
 				</portlet:renderURL>
 
-				<portlet:actionURL name="deleteStudentAction" var="deleteStudentActionURL">
-					<portlet:param name="studentId" value="${student.getStudentId()}" />
+				<portlet:actionURL name="deleteStudentAction"
+					var="deleteStudentActionURL">
+					<portlet:param name="studentId" value="${ student.getStudentId() }" />
 				</portlet:actionURL>
-				<liferay-ui:icon message="edit" url="${updateStudentRenderURL}" />
-				<liferay-ui:icon message="delete" url="${deleteStudentActionURL}" />
+				<liferay-ui:icon message="edit" url="${ updateStudentRenderURL }" />
+				<liferay-ui:icon message="delete" url="${ deleteStudentActionURL }" />
 			</liferay-ui:icon-menu>
 		</liferay-ui:search-container-column-text>
 	</liferay-ui:search-container-row>

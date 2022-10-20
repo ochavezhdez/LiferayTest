@@ -4,24 +4,25 @@
 
 <aui:form action="<%=saveStudentActionURL%>" name="studentForm"
 	method="post">
-	<aui:input name="studentId" type="hidden" value="${student.studentId}" />
+	<aui:input name="studentId" type="hidden"
+		value="${ student.studentId }" />
 	<aui:fieldset-group markupView="lexicon">
 		<aui:fieldset label="Personal Information">
 			<aui:row>
 				<aui:col width="50">
-					<aui:input name="firstName" value="${student.firstName}">
+					<aui:input name="firstName" value="${ student.firstName }">
 						<aui:validator name="required" />
 						<aui:validator name="alpha" />
 					</aui:input>
 				</aui:col>
 				<aui:col width="50">
-					<aui:input name="lastName" value="${student.lastName}">
+					<aui:input name="lastName" value="${ student.lastName }">
 						<aui:validator name="required" />
 						<aui:validator name="alpha" />
 					</aui:input>
 				</aui:col>
 				<aui:col width="50">
-					<aui:input name="city" value="${student.city}">
+					<aui:input name="city" value="${ student.city }">
 						<aui:validator name="required" />
 						<aui:validator name="alpha" />
 					</aui:input>
@@ -31,13 +32,13 @@
 		<aui:fieldset label="Miscellaneous">
 			<aui:row>
 				<aui:col width="50">
-					<aui:input name="enrollmentNo" value="${student.enrollmentNo}">
+					<aui:input name="enrollmentNo" value="${ student.enrollmentNo }">
 						<aui:validator name="required" />
 						<aui:validator name="alphanum" />
 					</aui:input>
 				</aui:col>
 				<aui:col width="50">
-					<aui:input name="contactNo" value="${student.contactNo}">
+					<aui:input name="contactNo" value="${ student.contactNo }">
 						<aui:validator name="required" />
 						<aui:validator name="string" />
 					</aui:input>
