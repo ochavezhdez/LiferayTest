@@ -6,7 +6,7 @@
 List<User> userList = (List<User>) request.getAttribute("userList");
 %>
 
-<liferay-portlet:actionURL name="saveUser" var="saveUserkVar">
+<liferay-portlet:actionURL name="saveUser" var="saveUserVar">
 </liferay-portlet:actionURL>
 
 <liferay-portlet:renderURL var="viewUserVar">
@@ -21,7 +21,7 @@ List<User> userList = (List<User>) request.getAttribute("userList");
 <liferay-portlet:resourceURL id="getUsers" var="getUsersVar"></liferay-portlet:resourceURL>
 <liferay-portlet:resourceURL id="getUser" var="getUserVar"></liferay-portlet:resourceURL>
 
-<aui:form action="<%=saveUserkVar%>" cssClass="container-fluid-1280"
+<aui:form action="<%=saveUserVar%>" cssClass="container-fluid-1280"
 	method="post" name="fromGuestBook">
 	<aui:fieldset-group markupView="lexicon">
 		<aui:fieldset label="Personal Information">

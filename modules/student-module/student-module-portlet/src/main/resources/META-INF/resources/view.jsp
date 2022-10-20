@@ -1,15 +1,13 @@
-<%@page import="com.liferay.student.service.StudentLocalServiceUtil"%>
+<%@ page import="com.liferay.student.service.StudentLocalServiceUtil"%>
 <%@ include file="/init.jsp"%>
 
 <portlet:renderURL var="addStudentRenderURL">
-	<portlet:param name="mvcPath" value="/add-student.jsp" />
+	<liferay-portlet:param name="mvcRenderCommandName"
+		value="saveStudentRender" />
 </portlet:renderURL>
 
-<div class="mb-5">
-	<a href="<%=addStudentRenderURL%>" class="btn  btn-primary btn-default">
-		<i class="glyphicon glyphicon-plus"></i> Add Student
-	</a>
-</div>
+<aui:button href="<%=addStudentRenderURL%>" primary="true"
+	value="Add Student" />
 
 <liferay-ui:search-container emptyResultsMessage="Students don't found"
 	total="<%=StudentLocalServiceUtil.getStudentsCount()%>">
@@ -32,16 +30,12 @@
 			<liferay-ui:icon-menu direction="left-side" icon=""
 				markupView="lexicon" message="actions" showWhenSingleIcon="true">
 				<portlet:renderURL var="updateStudentRenderURL">
-					<portlet:param name="mvcPath" value="/update-student.jsp" />
-					<portlet:param name="enrollmentNo" value="${student.enrollmentNo}" />
-					<portlet:param name="firstName" value="${student.firstName}" />
-					<portlet:param name="lastName" value="${student.lastName}" />
-					<portlet:param name="contactNo" value="${student.contactNo}" />
-					<portlet:param name="city" value="${student.city}" />
+					<liferay-portlet:param name="mvcRenderCommandName"
+						value="saveStudentRender" />
 					<portlet:param name="studentId" value="${student.studentId}" />
 				</portlet:renderURL>
 
-				<portlet:actionURL name="deleteStudent" var="deleteStudentActionURL">
+				<portlet:actionURL name="deleteStudentAction" var="deleteStudentActionURL">
 					<portlet:param name="studentId" value="${student.getStudentId()}" />
 				</portlet:actionURL>
 				<liferay-ui:icon message="edit" url="${updateStudentRenderURL}" />
