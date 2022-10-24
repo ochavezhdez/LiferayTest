@@ -12,5 +12,6 @@
 	<modules>
 		<module>my-guestbook-project</module>
     <module>student-module</module>
+    <module>guestbook</module>
   </modules>
 </project>

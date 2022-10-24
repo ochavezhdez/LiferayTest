@@ -1448,75 +1448,68 @@ public class StudentPersistenceImpl
 	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 =
 		"student.companyId = ?";
 
-	private FinderPath _finderPathWithPaginationFindByname;
-	private FinderPath _finderPathWithoutPaginationFindByname;
-	private FinderPath _finderPathCountByname;
+	private FinderPath _finderPathWithPaginationFindByName;
+	private FinderPath _finderPathWithoutPaginationFindByName;
+	private FinderPath _finderPathCountByName;
 
 	/**
-	 * Returns all the students where firstName = &#63; and lastName = &#63;.
+	 * Returns all the students where firstName = &#63;.
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @return the matching students
 	 */
 	@Override
-	public List<Student> findByname(String firstName, String lastName) {
-		return findByname(
-			firstName, lastName, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	public List<Student> findByName(String firstName) {
+		return findByName(
+			firstName, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the students where firstName = &#63; and lastName = &#63;.
+	 * Returns a range of all the students where firstName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>StudentModelImpl</code>.
 	 * </p>
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @param start the lower bound of the range of students
 	 * @param end the upper bound of the range of students (not inclusive)
 	 * @return the range of matching students
 	 */
 	@Override
-	public List<Student> findByname(
-		String firstName, String lastName, int start, int end) {
-
-		return findByname(firstName, lastName, start, end, null);
+	public List<Student> findByName(String firstName, int start, int end) {
+		return findByName(firstName, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the students where firstName = &#63; and lastName = &#63;.
+	 * Returns an ordered range of all the students where firstName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>StudentModelImpl</code>.
 	 * </p>
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @param start the lower bound of the range of students
 	 * @param end the upper bound of the range of students (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching students
 	 */
 	@Override
-	public List<Student> findByname(
-		String firstName, String lastName, int start, int end,
+	public List<Student> findByName(
+		String firstName, int start, int end,
 		OrderByComparator<Student> orderByComparator) {
 
-		return findByname(
-			firstName, lastName, start, end, orderByComparator, true);
+		return findByName(firstName, start, end, orderByComparator, true);
 	}
 
 	/**
-	 * Returns an ordered range of all the students where firstName = &#63; and lastName = &#63;.
+	 * Returns an ordered range of all the students where firstName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>StudentModelImpl</code>.
 	 * </p>
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @param start the lower bound of the range of students
 	 * @param end the upper bound of the range of students (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -1524,12 +1517,11 @@ public class StudentPersistenceImpl
 	 * @return the ordered range of matching students
 	 */
 	@Override
-	public List<Student> findByname(
-		String firstName, String lastName, int start, int end,
+	public List<Student> findByName(
+		String firstName, int start, int end,
 		OrderByComparator<Student> orderByComparator, boolean useFinderCache) {
 
 		firstName = Objects.toString(firstName, "");
-		lastName = Objects.toString(lastName, "");
 
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
@@ -1538,14 +1530,14 @@ public class StudentPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByname;
-				finderArgs = new Object[] {firstName, lastName};
+				finderPath = _finderPathWithoutPaginationFindByName;
+				finderArgs = new Object[] {firstName};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByname;
+			finderPath = _finderPathWithPaginationFindByName;
 			finderArgs = new Object[] {
-				firstName, lastName, start, end, orderByComparator
+				firstName, start, end, orderByComparator
 			};
 		}
 
@@ -1556,9 +1548,7 @@ public class StudentPersistenceImpl
 
 			if ((list != null) && !list.isEmpty()) {
 				for (Student student : list) {
-					if (!firstName.equals(student.getFirstName()) ||
-						!lastName.equals(student.getLastName())) {
-
+					if (!firstName.equals(student.getFirstName())) {
 						list = null;
 
 						break;
@@ -1572,10 +1562,10 @@ public class StudentPersistenceImpl
 
 			if (orderByComparator != null) {
 				sb = new StringBundler(
-					4 + (orderByComparator.getOrderByFields().length * 2));
+					3 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
-				sb = new StringBundler(4);
+				sb = new StringBundler(3);
 			}
 
 			sb.append(_SQL_SELECT_STUDENT_WHERE);
@@ -1589,17 +1579,6 @@ public class StudentPersistenceImpl
 				bindFirstName = true;
 
 				sb.append(_FINDER_COLUMN_NAME_FIRSTNAME_2);
-			}
-
-			boolean bindLastName = false;
-
-			if (lastName.isEmpty()) {
-				sb.append(_FINDER_COLUMN_NAME_LASTNAME_3);
-			}
-			else {
-				bindLastName = true;
-
-				sb.append(_FINDER_COLUMN_NAME_LASTNAME_2);
 			}
 
 			if (orderByComparator != null) {
@@ -1625,10 +1604,6 @@ public class StudentPersistenceImpl
 					queryPos.add(firstName);
 				}
 
-				if (bindLastName) {
-					queryPos.add(lastName);
-				}
-
 				list = (List<Student>)QueryUtil.list(
 					query, getDialect(), start, end);
 
@@ -1650,36 +1625,30 @@ public class StudentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first student in the ordered set where firstName = &#63; and lastName = &#63;.
+	 * Returns the first student in the ordered set where firstName = &#63;.
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching student
 	 * @throws NoSuchStudentException if a matching student could not be found
 	 */
 	@Override
-	public Student findByname_First(
-			String firstName, String lastName,
-			OrderByComparator<Student> orderByComparator)
+	public Student findByName_First(
+			String firstName, OrderByComparator<Student> orderByComparator)
 		throws NoSuchStudentException {
 
-		Student student = fetchByname_First(
-			firstName, lastName, orderByComparator);
+		Student student = fetchByName_First(firstName, orderByComparator);
 
 		if (student != null) {
 			return student;
 		}
 
-		StringBundler sb = new StringBundler(6);
+		StringBundler sb = new StringBundler(4);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
 		sb.append("firstName=");
 		sb.append(firstName);
-
-		sb.append(", lastName=");
-		sb.append(lastName);
 
 		sb.append("}");
 
@@ -1687,20 +1656,17 @@ public class StudentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first student in the ordered set where firstName = &#63; and lastName = &#63;.
+	 * Returns the first student in the ordered set where firstName = &#63;.
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching student, or <code>null</code> if a matching student could not be found
 	 */
 	@Override
-	public Student fetchByname_First(
-		String firstName, String lastName,
-		OrderByComparator<Student> orderByComparator) {
+	public Student fetchByName_First(
+		String firstName, OrderByComparator<Student> orderByComparator) {
 
-		List<Student> list = findByname(
-			firstName, lastName, 0, 1, orderByComparator);
+		List<Student> list = findByName(firstName, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -1710,36 +1676,30 @@ public class StudentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last student in the ordered set where firstName = &#63; and lastName = &#63;.
+	 * Returns the last student in the ordered set where firstName = &#63;.
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching student
 	 * @throws NoSuchStudentException if a matching student could not be found
 	 */
 	@Override
-	public Student findByname_Last(
-			String firstName, String lastName,
-			OrderByComparator<Student> orderByComparator)
+	public Student findByName_Last(
+			String firstName, OrderByComparator<Student> orderByComparator)
 		throws NoSuchStudentException {
 
-		Student student = fetchByname_Last(
-			firstName, lastName, orderByComparator);
+		Student student = fetchByName_Last(firstName, orderByComparator);
 
 		if (student != null) {
 			return student;
 		}
 
-		StringBundler sb = new StringBundler(6);
+		StringBundler sb = new StringBundler(4);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
 		sb.append("firstName=");
 		sb.append(firstName);
-
-		sb.append(", lastName=");
-		sb.append(lastName);
 
 		sb.append("}");
 
@@ -1747,26 +1707,24 @@ public class StudentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last student in the ordered set where firstName = &#63; and lastName = &#63;.
+	 * Returns the last student in the ordered set where firstName = &#63;.
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching student, or <code>null</code> if a matching student could not be found
 	 */
 	@Override
-	public Student fetchByname_Last(
-		String firstName, String lastName,
-		OrderByComparator<Student> orderByComparator) {
+	public Student fetchByName_Last(
+		String firstName, OrderByComparator<Student> orderByComparator) {
 
-		int count = countByname(firstName, lastName);
+		int count = countByName(firstName);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<Student> list = findByname(
-			firstName, lastName, count - 1, count, orderByComparator);
+		List<Student> list = findByName(
+			firstName, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -1776,23 +1734,21 @@ public class StudentPersistenceImpl
 	}
 
 	/**
-	 * Returns the students before and after the current student in the ordered set where firstName = &#63; and lastName = &#63;.
+	 * Returns the students before and after the current student in the ordered set where firstName = &#63;.
 	 *
 	 * @param studentId the primary key of the current student
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next student
 	 * @throws NoSuchStudentException if a student with the primary key could not be found
 	 */
 	@Override
-	public Student[] findByname_PrevAndNext(
-			long studentId, String firstName, String lastName,
+	public Student[] findByName_PrevAndNext(
+			long studentId, String firstName,
 			OrderByComparator<Student> orderByComparator)
 		throws NoSuchStudentException {
 
 		firstName = Objects.toString(firstName, "");
-		lastName = Objects.toString(lastName, "");
 
 		Student student = findByPrimaryKey(studentId);
 
@@ -1803,14 +1759,13 @@ public class StudentPersistenceImpl
 
 			Student[] array = new StudentImpl[3];
 
-			array[0] = getByname_PrevAndNext(
-				session, student, firstName, lastName, orderByComparator, true);
+			array[0] = getByName_PrevAndNext(
+				session, student, firstName, orderByComparator, true);
 
 			array[1] = student;
 
-			array[2] = getByname_PrevAndNext(
-				session, student, firstName, lastName, orderByComparator,
-				false);
+			array[2] = getByName_PrevAndNext(
+				session, student, firstName, orderByComparator, false);
 
 			return array;
 		}
@@ -1822,19 +1777,19 @@ public class StudentPersistenceImpl
 		}
 	}
 
-	protected Student getByname_PrevAndNext(
-		Session session, Student student, String firstName, String lastName,
+	protected Student getByName_PrevAndNext(
+		Session session, Student student, String firstName,
 		OrderByComparator<Student> orderByComparator, boolean previous) {
 
 		StringBundler sb = null;
 
 		if (orderByComparator != null) {
 			sb = new StringBundler(
-				5 + (orderByComparator.getOrderByConditionFields().length * 3) +
+				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
 					(orderByComparator.getOrderByFields().length * 3));
 		}
 		else {
-			sb = new StringBundler(4);
+			sb = new StringBundler(3);
 		}
 
 		sb.append(_SQL_SELECT_STUDENT_WHERE);
@@ -1848,17 +1803,6 @@ public class StudentPersistenceImpl
 			bindFirstName = true;
 
 			sb.append(_FINDER_COLUMN_NAME_FIRSTNAME_2);
-		}
-
-		boolean bindLastName = false;
-
-		if (lastName.isEmpty()) {
-			sb.append(_FINDER_COLUMN_NAME_LASTNAME_3);
-		}
-		else {
-			bindLastName = true;
-
-			sb.append(_FINDER_COLUMN_NAME_LASTNAME_2);
 		}
 
 		if (orderByComparator != null) {
@@ -1934,10 +1878,6 @@ public class StudentPersistenceImpl
 			queryPos.add(firstName);
 		}
 
-		if (bindLastName) {
-			queryPos.add(lastName);
-		}
-
 		if (orderByComparator != null) {
 			for (Object orderByConditionValue :
 					orderByComparator.getOrderByConditionValues(student)) {
@@ -1957,42 +1897,38 @@ public class StudentPersistenceImpl
 	}
 
 	/**
-	 * Removes all the students where firstName = &#63; and lastName = &#63; from the database.
+	 * Removes all the students where firstName = &#63; from the database.
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 */
 	@Override
-	public void removeByname(String firstName, String lastName) {
+	public void removeByName(String firstName) {
 		for (Student student :
-				findByname(
-					firstName, lastName, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
-					null)) {
+				findByName(
+					firstName, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
 
 			remove(student);
 		}
 	}
 
 	/**
-	 * Returns the number of students where firstName = &#63; and lastName = &#63;.
+	 * Returns the number of students where firstName = &#63;.
 	 *
 	 * @param firstName the first name
-	 * @param lastName the last name
 	 * @return the number of matching students
 	 */
 	@Override
-	public int countByname(String firstName, String lastName) {
+	public int countByName(String firstName) {
 		firstName = Objects.toString(firstName, "");
-		lastName = Objects.toString(lastName, "");
 
-		FinderPath finderPath = _finderPathCountByname;
+		FinderPath finderPath = _finderPathCountByName;
 
-		Object[] finderArgs = new Object[] {firstName, lastName};
+		Object[] finderArgs = new Object[] {firstName};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs);
 
 		if (count == null) {
-			StringBundler sb = new StringBundler(3);
+			StringBundler sb = new StringBundler(2);
 
 			sb.append(_SQL_COUNT_STUDENT_WHERE);
 
@@ -2005,17 +1941,6 @@ public class StudentPersistenceImpl
 				bindFirstName = true;
 
 				sb.append(_FINDER_COLUMN_NAME_FIRSTNAME_2);
-			}
-
-			boolean bindLastName = false;
-
-			if (lastName.isEmpty()) {
-				sb.append(_FINDER_COLUMN_NAME_LASTNAME_3);
-			}
-			else {
-				bindLastName = true;
-
-				sb.append(_FINDER_COLUMN_NAME_LASTNAME_2);
 			}
 
 			String sql = sb.toString();
@@ -2031,10 +1956,6 @@ public class StudentPersistenceImpl
 
 				if (bindFirstName) {
 					queryPos.add(firstName);
-				}
-
-				if (bindLastName) {
-					queryPos.add(lastName);
 				}
 
 				count = (Long)query.uniqueResult();
@@ -2053,16 +1974,10 @@ public class StudentPersistenceImpl
 	}
 
 	private static final String _FINDER_COLUMN_NAME_FIRSTNAME_2 =
-		"student.firstName = ? AND ";
+		"student.firstName = ?";
 
 	private static final String _FINDER_COLUMN_NAME_FIRSTNAME_3 =
-		"(student.firstName IS NULL OR student.firstName = '') AND ";
-
-	private static final String _FINDER_COLUMN_NAME_LASTNAME_2 =
-		"student.lastName = ?";
-
-	private static final String _FINDER_COLUMN_NAME_LASTNAME_3 =
-		"(student.lastName IS NULL OR student.lastName = '')";
+		"(student.firstName IS NULL OR student.firstName = '')";
 
 	public StudentPersistenceImpl() {
 		Map<String, String> dbColumnNames = new HashMap<String, String>();
@@ -2678,24 +2593,23 @@ public class StudentPersistenceImpl
 			new String[] {String.class.getName(), Long.class.getName()},
 			new String[] {"uuid_", "companyId"}, false);
 
-		_finderPathWithPaginationFindByname = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByname",
+		_finderPathWithPaginationFindByName = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByName",
 			new String[] {
-				String.class.getName(), String.class.getName(),
-				Integer.class.getName(), Integer.class.getName(),
-				OrderByComparator.class.getName()
+				String.class.getName(), Integer.class.getName(),
+				Integer.class.getName(), OrderByComparator.class.getName()
 			},
-			new String[] {"firstName", "lastName"}, true);
+			new String[] {"firstName"}, true);
 
-		_finderPathWithoutPaginationFindByname = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByname",
-			new String[] {String.class.getName(), String.class.getName()},
-			new String[] {"firstName", "lastName"}, true);
+		_finderPathWithoutPaginationFindByName = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByName",
+			new String[] {String.class.getName()}, new String[] {"firstName"},
+			true);
 
-		_finderPathCountByname = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByname",
-			new String[] {String.class.getName(), String.class.getName()},
-			new String[] {"firstName", "lastName"}, false);
+		_finderPathCountByName = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByName",
+			new String[] {String.class.getName()}, new String[] {"firstName"},
+			false);
 
 		_setStudentUtilPersistence(this);
 	}

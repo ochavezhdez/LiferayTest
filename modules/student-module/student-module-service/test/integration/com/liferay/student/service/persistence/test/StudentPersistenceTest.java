@@ -209,12 +209,12 @@ public class StudentPersistenceTest {
 	}
 
 	@Test
-	public void testCountByname() throws Exception {
-		_persistence.countByname("", "");
+	public void testCountByName() throws Exception {
+		_persistence.countByName("");
 
-		_persistence.countByname("null", "null");
+		_persistence.countByName("null");
 
-		_persistence.countByname((String)null, (String)null);
+		_persistence.countByName((String)null);
 	}
 
 	@Test

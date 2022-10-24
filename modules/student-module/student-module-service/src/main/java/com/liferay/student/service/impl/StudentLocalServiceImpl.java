@@ -15,7 +15,10 @@
 package com.liferay.student.service.impl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.student.model.Student;
 import com.liferay.student.service.base.StudentLocalServiceBaseImpl;
+
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -27,4 +30,9 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class StudentLocalServiceImpl extends StudentLocalServiceBaseImpl {
+
+	public List<Student> getStudents(String name, int start, int end) {
+		return studentPersistence.findByName(name, start, end);
+	}
+
 }

@@ -272,6 +272,9 @@ public interface StudentLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Student> getStudents(int start, int end);
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Student> getStudents(String name, int start, int end);
+
 	/**
 	 * Returns all the students matching the UUID and company.
 	 *

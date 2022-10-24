@@ -299,6 +299,10 @@ public class StudentLocalServiceUtil {
 		return getService().getStudents(start, end);
 	}
 
+	public static List<Student> getStudents(String name, int start, int end) {
+		return getService().getStudents(name, start, end);
+	}
+
 	/**
 	 * Returns all the students matching the UUID and company.
 	 *

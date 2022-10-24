@@ -43,9 +43,8 @@
 
 		<!-- Finder methods -->
 
-		<finder name="name" return-type="Collection">
+		<finder name="Name" return-type="Collection">
 			<finder-column name="firstName" />
-			<finder-column name="lastName" />
 		</finder>
 
 		<!-- References -->

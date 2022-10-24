@@ -16,15 +16,14 @@
 		className="com.liferay.student.model.Student" escapedModel="true"
 		keyProperty="studentId" modelVar="student">
 		<liferay-ui:search-container-column-text name="Enrollment No"
-			orderable="true" property="enrollmentNo" />
+			property="enrollmentNo" />
 		<liferay-ui:search-container-column-text name="First Name"
-			orderable="true" property="firstName" />
+			property="firstName" />
 		<liferay-ui:search-container-column-text name="Last Name"
-			orderable="true" property="lastName" />
+			property="lastName" />
 		<liferay-ui:search-container-column-text name="Contact No"
-			orderable="true" property="contactNo" />
-		<liferay-ui:search-container-column-text name="City" orderable="true"
-			property="city" />
+			property="contactNo" />
+		<liferay-ui:search-container-column-text name="City" property="city" />
 		<liferay-ui:search-container-column-text name="actions">
 			<liferay-ui:icon-menu direction="left-side" icon=""
 				markupView="lexicon" message="actions" showWhenSingleIcon="true">

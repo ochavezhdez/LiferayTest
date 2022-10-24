@@ -332,6 +332,13 @@ public class StudentLocalServiceWrapper
 		return _studentLocalService.getStudents(start, end);
 	}
 
+	@Override
+	public java.util.List<com.liferay.student.model.Student> getStudents(
+		String name, int start, int end) {
+
+		return _studentLocalService.getStudents(name, start, end);
+	}
+
 	/**
 	 * Returns all the students matching the UUID and company.
 	 *
