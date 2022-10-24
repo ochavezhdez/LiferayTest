@@ -10,3 +10,5 @@ Liferay-Service: true
 -plugin.metatype: com.liferay.ant.bnd.metatype.MetatypePlugin
 -plugin.service: com.liferay.ant.bnd.service.ServiceAnalyzerPlugin
 -provider-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}
+
+Export-Package: com.liferay.docs.guestbook.search
