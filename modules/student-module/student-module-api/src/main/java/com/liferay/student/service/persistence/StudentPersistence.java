@@ -387,147 +387,147 @@ public interface StudentPersistence extends BasePersistence<Student> {
 	public int countByUuid_C(String uuid, long companyId);
 
 	/**
-	 * Returns all the students where firstName = &#63;.
+	 * Returns all the students where groupId = &#63;.
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @return the matching students
 	 */
-	public java.util.List<Student> findByName(String firstName);
+	public java.util.List<Student> findByGroupId(long groupId);
 
 	/**
-	 * Returns a range of all the students where firstName = &#63;.
+	 * Returns a range of all the students where groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>StudentModelImpl</code>.
 	 * </p>
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @param start the lower bound of the range of students
 	 * @param end the upper bound of the range of students (not inclusive)
 	 * @return the range of matching students
 	 */
-	public java.util.List<Student> findByName(
-		String firstName, int start, int end);
+	public java.util.List<Student> findByGroupId(
+		long groupId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the students where firstName = &#63;.
+	 * Returns an ordered range of all the students where groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>StudentModelImpl</code>.
 	 * </p>
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @param start the lower bound of the range of students
 	 * @param end the upper bound of the range of students (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching students
 	 */
-	public java.util.List<Student> findByName(
-		String firstName, int start, int end,
+	public java.util.List<Student> findByGroupId(
+		long groupId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Student>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the students where firstName = &#63;.
+	 * Returns an ordered range of all the students where groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>StudentModelImpl</code>.
 	 * </p>
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @param start the lower bound of the range of students
 	 * @param end the upper bound of the range of students (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching students
 	 */
-	public java.util.List<Student> findByName(
-		String firstName, int start, int end,
+	public java.util.List<Student> findByGroupId(
+		long groupId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Student>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first student in the ordered set where firstName = &#63;.
+	 * Returns the first student in the ordered set where groupId = &#63;.
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching student
 	 * @throws NoSuchStudentException if a matching student could not be found
 	 */
-	public Student findByName_First(
-			String firstName,
+	public Student findByGroupId_First(
+			long groupId,
 			com.liferay.portal.kernel.util.OrderByComparator<Student>
 				orderByComparator)
 		throws NoSuchStudentException;
 
 	/**
-	 * Returns the first student in the ordered set where firstName = &#63;.
+	 * Returns the first student in the ordered set where groupId = &#63;.
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching student, or <code>null</code> if a matching student could not be found
 	 */
-	public Student fetchByName_First(
-		String firstName,
+	public Student fetchByGroupId_First(
+		long groupId,
 		com.liferay.portal.kernel.util.OrderByComparator<Student>
 			orderByComparator);
 
 	/**
-	 * Returns the last student in the ordered set where firstName = &#63;.
+	 * Returns the last student in the ordered set where groupId = &#63;.
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching student
 	 * @throws NoSuchStudentException if a matching student could not be found
 	 */
-	public Student findByName_Last(
-			String firstName,
+	public Student findByGroupId_Last(
+			long groupId,
 			com.liferay.portal.kernel.util.OrderByComparator<Student>
 				orderByComparator)
 		throws NoSuchStudentException;
 
 	/**
-	 * Returns the last student in the ordered set where firstName = &#63;.
+	 * Returns the last student in the ordered set where groupId = &#63;.
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching student, or <code>null</code> if a matching student could not be found
 	 */
-	public Student fetchByName_Last(
-		String firstName,
+	public Student fetchByGroupId_Last(
+		long groupId,
 		com.liferay.portal.kernel.util.OrderByComparator<Student>
 			orderByComparator);
 
 	/**
-	 * Returns the students before and after the current student in the ordered set where firstName = &#63;.
+	 * Returns the students before and after the current student in the ordered set where groupId = &#63;.
 	 *
 	 * @param studentId the primary key of the current student
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next student
 	 * @throws NoSuchStudentException if a student with the primary key could not be found
 	 */
-	public Student[] findByName_PrevAndNext(
-			long studentId, String firstName,
+	public Student[] findByGroupId_PrevAndNext(
+			long studentId, long groupId,
 			com.liferay.portal.kernel.util.OrderByComparator<Student>
 				orderByComparator)
 		throws NoSuchStudentException;
 
 	/**
-	 * Removes all the students where firstName = &#63; from the database.
+	 * Removes all the students where groupId = &#63; from the database.
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 */
-	public void removeByName(String firstName);
+	public void removeByGroupId(long groupId);
 
 	/**
-	 * Returns the number of students where firstName = &#63;.
+	 * Returns the number of students where groupId = &#63;.
 	 *
-	 * @param firstName the first name
+	 * @param groupId the group ID
 	 * @return the number of matching students
 	 */
-	public int countByName(String firstName);
+	public int countByGroupId(long groupId);
 
 	/**
 	 * Caches the student in the entity cache if it is enabled.

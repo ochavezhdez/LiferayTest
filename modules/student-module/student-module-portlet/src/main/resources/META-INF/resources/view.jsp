@@ -5,8 +5,10 @@
 		value="saveStudentRender" />
 </portlet:renderURL>
 
-<aui:button href="<%=addStudentRenderURL%>" primary="true"
-	value="Add Student" />
+<aui:button-row>
+	<aui:button href="<%=addStudentRenderURL%>" primary="true"
+		value="Add Student" />
+</aui:button-row>
 
 <liferay-ui:search-container emptyResultsMessage="Students don't found"
 	total="${ studentLocalService.getStudentsCount() }">

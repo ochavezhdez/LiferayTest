@@ -43,8 +43,8 @@
 
 		<!-- Finder methods -->
 
-		<finder name="Name" return-type="Collection">
-			<finder-column name="firstName" />
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
 		</finder>
 
 		<!-- References -->
@@ -54,4 +54,12 @@
 		<reference entity="AssetTag"
 			package-path="com.liferay.portlet.asset" />
 	</entity>
+
+	<exceptions>
+		<exception>StudentEnrollmentNo</exception>
+		<exception>StudentFirstName</exception>
+		<exception>StudentLastName</exception>
+		<exception>StudentContactNo</exception>
+		<exception>StudentCity</exception>
+	</exceptions>
 </service-builder>

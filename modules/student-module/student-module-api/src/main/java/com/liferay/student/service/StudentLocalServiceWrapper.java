@@ -334,9 +334,25 @@ public class StudentLocalServiceWrapper
 
 	@Override
 	public java.util.List<com.liferay.student.model.Student> getStudents(
-		String name, int start, int end) {
+		long groupId) {
 
-		return _studentLocalService.getStudents(name, start, end);
+		return _studentLocalService.getStudents(groupId);
+	}
+
+	@Override
+	public java.util.List<com.liferay.student.model.Student> getStudents(
+		long groupId, int start, int end) {
+
+		return _studentLocalService.getStudents(groupId, start, end);
+	}
+
+	@Override
+	public java.util.List<com.liferay.student.model.Student> getStudents(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator
+			<com.liferay.student.model.Student> obc) {
+
+		return _studentLocalService.getStudents(groupId, start, end, obc);
 	}
 
 	/**
@@ -383,6 +399,21 @@ public class StudentLocalServiceWrapper
 	@Override
 	public int getStudentsCount() {
 		return _studentLocalService.getStudentsCount();
+	}
+
+	@Override
+	public int getStudentsCount(long groupId) {
+		return _studentLocalService.getStudentsCount(groupId);
+	}
+
+	@Override
+	public com.liferay.student.model.Student saveStudent(
+			long userId, com.liferay.student.dto.StudentDTO studentDTO,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _studentLocalService.saveStudent(
+			userId, studentDTO, serviceContext);
 	}
 
 	/**

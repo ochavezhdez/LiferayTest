@@ -299,8 +299,18 @@ public class StudentLocalServiceUtil {
 		return getService().getStudents(start, end);
 	}
 
-	public static List<Student> getStudents(String name, int start, int end) {
-		return getService().getStudents(name, start, end);
+	public static List<Student> getStudents(long groupId) {
+		return getService().getStudents(groupId);
+	}
+
+	public static List<Student> getStudents(long groupId, int start, int end) {
+		return getService().getStudents(groupId, start, end);
+	}
+
+	public static List<Student> getStudents(
+		long groupId, int start, int end, OrderByComparator<Student> obc) {
+
+		return getService().getStudents(groupId, start, end, obc);
 	}
 
 	/**
@@ -341,6 +351,18 @@ public class StudentLocalServiceUtil {
 	 */
 	public static int getStudentsCount() {
 		return getService().getStudentsCount();
+	}
+
+	public static int getStudentsCount(long groupId) {
+		return getService().getStudentsCount(groupId);
+	}
+
+	public static Student saveStudent(
+			long userId, com.liferay.student.dto.StudentDTO studentDTO,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().saveStudent(userId, studentDTO, serviceContext);
 	}
 
 	/**

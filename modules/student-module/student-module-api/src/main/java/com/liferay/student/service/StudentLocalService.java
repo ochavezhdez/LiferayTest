@@ -28,10 +28,12 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
 import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.student.dto.StudentDTO;
 import com.liferay.student.model.Student;
 
 import java.io.Serializable;
@@ -273,7 +275,14 @@ public interface StudentLocalService
 	public List<Student> getStudents(int start, int end);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Student> getStudents(String name, int start, int end);
+	public List<Student> getStudents(long groupId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Student> getStudents(long groupId, int start, int end);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Student> getStudents(
+		long groupId, int start, int end, OrderByComparator<Student> obc);
 
 	/**
 	 * Returns all the students matching the UUID and company.
@@ -308,6 +317,13 @@ public interface StudentLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getStudentsCount();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getStudentsCount(long groupId);
+
+	public Student saveStudent(
+			long userId, StudentDTO studentDTO, ServiceContext serviceContext)
+		throws PortalException;
 
 	/**
 	 * Updates the student in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

@@ -72,6 +72,11 @@
 			<artifactId>student-module-api</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.liferay.student</groupId>
+			<artifactId>student-module-service</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

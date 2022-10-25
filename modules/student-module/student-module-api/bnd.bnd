@@ -1,11 +1,12 @@
 Bundle-Name: student-module-api
 Bundle-SymbolicName: com.liferay.student.api
 Bundle-Version: 1.0.0
-Export-Package:\
+Export-Package: \
 	com.liferay.student.exception,\
 	com.liferay.student.model,\
 	com.liferay.student.service,\
-	com.liferay.student.service.persistence
+	com.liferay.student.service.persistence,\
+	com.liferay.student.dto
 -check: EXPORTS
 -consumer-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}
 -includeresource: META-INF/service.xml=../student-module-service/service.xml
