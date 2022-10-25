@@ -5,6 +5,9 @@
 		value="saveStudentRender" />
 </portlet:renderURL>
 
+<liferay-ui:success key="studentSaved" message="student-saved" />
+<liferay-ui:success key="studentDeleted" message="student-deleted" />
+
 <aui:button-row>
 	<aui:button href="<%=addStudentRenderURL%>" primary="true"
 		value="Add Student" />
@@ -13,7 +16,7 @@
 <liferay-ui:search-container emptyResultsMessage="Students don't found"
 	total="${ studentLocalService.getStudentsCount() }">
 	<liferay-ui:search-container-results
-		results="${ studentLocalService.getStudents(searchContainer.getStart(), searchContainer.getEnd()) }" />
+		results="${ studentLocalService.getStudents(scopeGroupId.longValue(), searchContainer.getStart(), searchContainer.getEnd()) }" />
 	<liferay-ui:search-container-row
 		className="com.liferay.student.model.Student" escapedModel="true"
 		keyProperty="studentId" modelVar="student">
@@ -39,8 +42,10 @@
 					var="deleteStudentActionURL">
 					<portlet:param name="studentId" value="${ student.getStudentId() }" />
 				</portlet:actionURL>
-				<liferay-ui:icon message="edit" url="${ updateStudentRenderURL }" />
-				<liferay-ui:icon message="delete" url="${ deleteStudentActionURL }" />
+				<liferay-ui:icon image="edit" message="Edit"
+					url="${ updateStudentRenderURL }" />
+				<liferay-ui:icon-delete image="delete"
+					url="${ deleteStudentActionURL }" />
 			</liferay-ui:icon-menu>
 		</liferay-ui:search-container-column-text>
 	</liferay-ui:search-container-row>
