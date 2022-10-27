@@ -22,6 +22,8 @@ import org.osgi.service.component.annotations.Component;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.search.Indexable;
+import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
@@ -38,21 +40,18 @@ import com.liferay.student.service.base.StudentLocalServiceBaseImpl;
 /**
  * @author Brian Wing Shun Chan
  */
-@Component(
-	property = "model.class.name=com.liferay.student.model.Student",
-	service = AopService.class
-)
+@Component(property = "model.class.name=com.liferay.student.model.Student", service = AopService.class)
 public class StudentLocalServiceImpl extends StudentLocalServiceBaseImpl {
 
+	@Indexable(type = IndexableType.DELETE)
 	public Student deleteStudent(Student student) {
 		studentPersistence.remove(student);
-
 		return student;
 	}
 
+	@Indexable(type = IndexableType.DELETE)
 	public Student deleteStudent(long studentId) throws PortalException {
 		Student student = studentPersistence.findByPrimaryKey(studentId);
-
 		return deleteStudent(student);
 	}
 
@@ -72,6 +71,7 @@ public class StudentLocalServiceImpl extends StudentLocalServiceBaseImpl {
 		return studentPersistence.countByGroupId(groupId);
 	}
 
+	@Indexable(type = IndexableType.REINDEX)
 	public Student saveStudent(long userId, StudentDTO studentDTO, ServiceContext serviceContext)
 			throws PortalException {
 		User user = userLocalService.getUserById(userId);

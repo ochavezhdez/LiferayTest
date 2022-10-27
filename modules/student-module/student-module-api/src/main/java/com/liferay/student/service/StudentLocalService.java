@@ -321,6 +321,7 @@ public interface StudentLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getStudentsCount(long groupId);
 
+	@Indexable(type = IndexableType.REINDEX)
 	public Student saveStudent(
 			long userId, StudentDTO studentDTO, ServiceContext serviceContext)
 		throws PortalException;

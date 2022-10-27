@@ -20,18 +20,17 @@ public class StudentModelSummaryContributor implements ModelSummaryContributor {
 	@Override
 	public Summary getSummary(Document document, Locale locale, String snippet) {
 		Summary summary = createSummary(document);
-
-		summary.setMaxContentLength(200);
-
+		summary.setMaxContentLength(128);
 		return summary;
 	}
 
 	private Summary createSummary(Document document) {
 		String prefix = Field.SNIPPET + StringPool.UNDERLINE;
 
-		String title = document.get(prefix + "firstName", "firstName");
+		String title = document.get(prefix + Field.TITLE, Field.CONTENT);
+		String content = document.get(prefix + Field.CONTENT, Field.CONTENT);
 
-		return new Summary(title, StringPool.BLANK);
+		return new Summary(title, content);
 	}
 
 }

@@ -31,11 +31,12 @@ public class StudentSearchRegistrar {
 	protected void activate(BundleContext bundleContext) {
 		serviceRegistration = modelSearchRegistrarHelper.register(Student.class, bundleContext,
 				modelSearchDefinition -> {
-					modelSearchDefinition.setDefaultSelectedFieldNames(Field.ASSET_TAG_NAMES, Field.COMPANY_ID,
-							Field.CONTENT, Field.ENTRY_CLASS_NAME, Field.ENTRY_CLASS_PK, Field.GROUP_ID,
-							Field.MODIFIED_DATE, Field.SCOPE_GROUP_ID, Field.TITLE, Field.UID);
+					modelSearchDefinition.setDefaultSelectedFieldNames(Field.COMPANY_ID, Field.ENTRY_CLASS_NAME,
+							Field.ENTRY_CLASS_PK, Field.UID, Field.SCOPE_GROUP_ID, Field.GROUP_ID);
+					modelSearchDefinition.setDefaultSelectedLocalizedFieldNames(Field.TITLE, Field.CONTENT);
 					modelSearchDefinition.setModelIndexWriteContributor(modelIndexWriterContributor);
 					modelSearchDefinition.setModelSummaryContributor(modelSummaryContributor);
+					modelSearchDefinition.setSelectAllLocales(true);
 				});
 	}
 

@@ -24,21 +24,23 @@ public class StudentModelDocumentContributor implements ModelDocumentContributor
 	private static final Log log = LogFactoryUtil.getLog(StudentModelDocumentContributor.class);
 
 	@Override
-	public void contribute(Document document, Student baseModel) {
+	public void contribute(Document document, Student student) {
 		try {
-			document.addDate(Field.MODIFIED_DATE, baseModel.getModifiedDate());
+			Locale defaultLocale = PortalUtil.getSiteDefaultLocale(student.getGroupId());
+			document.addDate(Field.MODIFIED_DATE, student.getModifiedDate());
+			document.addText("city", student.getCity());
 
-			Locale defaultLocale = PortalUtil.getSiteDefaultLocale(baseModel.getGroupId());
+			String localizedTitle = LocalizationUtil.getLocalizedName(Field.TITLE, defaultLocale.toString());
+			String localizedContent = LocalizationUtil.getLocalizedName(Field.CONTENT, defaultLocale.toString());
 
-			String localizedFirstName = LocalizationUtil.getLocalizedName("firstName", defaultLocale.toString());
-			String localizedLastName = LocalizationUtil.getLocalizedName("lastName", defaultLocale.toString());
-
-			document.addText(localizedFirstName, baseModel.getFirstName());
-			document.addText(localizedLastName, baseModel.getLastName());
+			document.addText(localizedTitle, student.getFirstName());
+			document.addText(localizedContent, student.getLastName());
 		} catch (PortalException pe) {
 			if (log.isWarnEnabled()) {
-				log.warn("Unable to index guestbook " + baseModel.getStudentId(), pe);
+				log.warn("Unable to index entry " + student.getStudentId(), pe);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

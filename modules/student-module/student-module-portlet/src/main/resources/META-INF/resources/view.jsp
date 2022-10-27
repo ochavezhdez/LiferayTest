@@ -1,3 +1,4 @@
+<%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
 <%@ include file="/init.jsp"%>
 
 <portlet:renderURL var="addStudentRenderURL">
@@ -8,15 +9,30 @@
 <liferay-ui:success key="studentSaved" message="student-saved" />
 <liferay-ui:success key="studentDeleted" message="student-deleted" />
 
+<portlet:renderURL var="searchURL">
+	<portlet:param name="mvcPath" value="/view.jsp" />
+</portlet:renderURL>
+<aui:form action="${searchURL}" name="fm">
+	<div class="row">
+		<div class="col-md-8">
+			<aui:input inlineLabel="left" label="" name="keywords"
+				placeholder="search-entries" size="256" />
+		</div>
+		<div class="col-md-4">
+			<aui:button type="submit" value="search" />
+		</div>
+	</div>
+</aui:form>
+
 <aui:button-row>
 	<aui:button href="<%=addStudentRenderURL%>" primary="true"
 		value="Add Student" />
 </aui:button-row>
 
 <liferay-ui:search-container emptyResultsMessage="Students don't found"
-	total="${ studentLocalService.getStudentsCount() }">
+	total="${ studentSearch.getStudentsCount() }">
 	<liferay-ui:search-container-results
-		results="${ studentLocalService.getStudents(scopeGroupId.longValue(), searchContainer.getStart(), searchContainer.getEnd()) }" />
+		results="${ studentSearch.getStudents(searchContainer.getStart(), searchContainer.getEnd()) }" />
 	<liferay-ui:search-container-row
 		className="com.liferay.student.model.Student" escapedModel="true"
 		keyProperty="studentId" modelVar="student">

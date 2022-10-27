@@ -21,9 +21,6 @@ public class StudentModelIndexerWriterContributor implements ModelIndexerWriterC
 	@Reference
 	protected DynamicQueryBatchIndexingActionableFactory dynamicQueryBatchIndexingActionableFactory;
 
-//	@Reference
-//	protected StudentEntryBatchReindexer studentEntryBatchReindexer;
-
 	@Reference
 	protected StudentLocalService studentLocalService;
 
@@ -32,7 +29,6 @@ public class StudentModelIndexerWriterContributor implements ModelIndexerWriterC
 			ModelIndexerWriterDocumentHelper modelIndexerWriterDocumentHelper) {
 		batchIndexingActionable.setPerformActionMethod((Student student) -> {
 			Document document = modelIndexerWriterDocumentHelper.getDocument(student);
-
 			batchIndexingActionable.addDocuments(document);
 		});
 	}
@@ -46,11 +42,6 @@ public class StudentModelIndexerWriterContributor implements ModelIndexerWriterC
 	@Override
 	public long getCompanyId(Student baseModel) {
 		return baseModel.getCompanyId();
-	}
-	
-	@Override
-	public void modelIndexed(Student baseModel) {
-//		studentEntryBatchReindexer.reindex(baseModel.getStudentId(), baseModel.getCompanyId());
 	}
 
 }
