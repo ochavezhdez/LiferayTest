@@ -1,4 +1,4 @@
-package com.liferay.student.portlet;
+package com.liferay.student.portlet.search;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,12 @@ import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.student.model.Student;
 import com.liferay.student.service.StudentLocalService;
 
-public class StudentSearch {
+public class StudentSearchContext implements StudentSeacrh {
 
 	private SearchContext searchContext;
 	private StudentLocalService studentLocalService;
 
-	public StudentSearch(HttpServletRequest httpServletRequest, String pattern,
+	public StudentSearchContext(HttpServletRequest httpServletRequest, String pattern,
 			StudentLocalService studentLocalService) {
 		searchContext = SearchContextFactory.getInstance(httpServletRequest);
 		searchContext.setKeywords(pattern);
@@ -41,7 +41,7 @@ public class StudentSearch {
 		return hits.getDocs().length;
 	}
 
-	public List<Student> getStudents(int start, int end) throws PortalException {
+	public List<Student> getStudents(long groupId, int start, int end) throws PortalException {
 		searchContext.setStart(start);
 		searchContext.setEnd(end);
 

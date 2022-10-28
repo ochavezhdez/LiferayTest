@@ -40,7 +40,10 @@ import com.liferay.student.service.base.StudentLocalServiceBaseImpl;
 /**
  * @author Brian Wing Shun Chan
  */
-@Component(property = "model.class.name=com.liferay.student.model.Student", service = AopService.class)
+@Component(
+	property = "model.class.name=com.liferay.student.model.Student",
+	service = AopService.class
+)
 public class StudentLocalServiceImpl extends StudentLocalServiceBaseImpl {
 
 	@Indexable(type = IndexableType.DELETE)
@@ -65,6 +68,10 @@ public class StudentLocalServiceImpl extends StudentLocalServiceBaseImpl {
 
 	public List<Student> getStudents(long groupId, int start, int end) {
 		return studentPersistence.findByGroupId(groupId, start, end);
+	}
+
+	public List<Student> getStudents(long groupId, String firstName, int start, int end) {
+		return studentPersistence.findByFirstName(groupId, firstName, start, end);
 	}
 
 	public int getStudentsCount(long groupId) {

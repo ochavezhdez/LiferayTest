@@ -12,8 +12,9 @@ import org.osgi.service.component.annotations.Reference;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.student.constants.StudentPortletKeys;
+import com.liferay.student.portlet.search.StudenSearchFinder;
+import com.liferay.student.portlet.search.StudentSeacrh;
 import com.liferay.student.service.StudentLocalService;
 
 /**
@@ -42,8 +43,10 @@ public class StudentPortlet extends MVCPortlet {
 	@Override
 	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
-		StudentSearch studentSearch = new StudentSearch(PortalUtil.getHttpServletRequest(renderRequest),
-				ParamUtil.getString(renderRequest, "keywords"), studentLocalService);
+		StudentSeacrh studentSearch = new StudenSearchFinder(studentLocalService,
+				ParamUtil.getString(renderRequest, "keywords"));
+//		StudentSeacrh studentSearch = new StudentSearchContext(PortalUtil.getHttpServletRequest(renderRequest),
+//				ParamUtil.getString(renderRequest, "keywords"), studentLocalService);
 
 		renderRequest.setAttribute("studentSearch", studentSearch);
 		super.render(renderRequest, renderResponse);

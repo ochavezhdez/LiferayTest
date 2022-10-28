@@ -692,6 +692,191 @@ public class StudentUtil {
 	}
 
 	/**
+	 * Returns all the students where groupId = &#63; and firstName = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @return the matching students
+	 */
+	public static List<Student> findByFirstName(
+		long groupId, String firstName) {
+
+		return getPersistence().findByFirstName(groupId, firstName);
+	}
+
+	/**
+	 * Returns a range of all the students where groupId = &#63; and firstName = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>StudentModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @param start the lower bound of the range of students
+	 * @param end the upper bound of the range of students (not inclusive)
+	 * @return the range of matching students
+	 */
+	public static List<Student> findByFirstName(
+		long groupId, String firstName, int start, int end) {
+
+		return getPersistence().findByFirstName(groupId, firstName, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the students where groupId = &#63; and firstName = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>StudentModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @param start the lower bound of the range of students
+	 * @param end the upper bound of the range of students (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching students
+	 */
+	public static List<Student> findByFirstName(
+		long groupId, String firstName, int start, int end,
+		OrderByComparator<Student> orderByComparator) {
+
+		return getPersistence().findByFirstName(
+			groupId, firstName, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the students where groupId = &#63; and firstName = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>StudentModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @param start the lower bound of the range of students
+	 * @param end the upper bound of the range of students (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching students
+	 */
+	public static List<Student> findByFirstName(
+		long groupId, String firstName, int start, int end,
+		OrderByComparator<Student> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByFirstName(
+			groupId, firstName, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first student in the ordered set where groupId = &#63; and firstName = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching student
+	 * @throws NoSuchStudentException if a matching student could not be found
+	 */
+	public static Student findByFirstName_First(
+			long groupId, String firstName,
+			OrderByComparator<Student> orderByComparator)
+		throws com.liferay.student.exception.NoSuchStudentException {
+
+		return getPersistence().findByFirstName_First(
+			groupId, firstName, orderByComparator);
+	}
+
+	/**
+	 * Returns the first student in the ordered set where groupId = &#63; and firstName = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching student, or <code>null</code> if a matching student could not be found
+	 */
+	public static Student fetchByFirstName_First(
+		long groupId, String firstName,
+		OrderByComparator<Student> orderByComparator) {
+
+		return getPersistence().fetchByFirstName_First(
+			groupId, firstName, orderByComparator);
+	}
+
+	/**
+	 * Returns the last student in the ordered set where groupId = &#63; and firstName = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching student
+	 * @throws NoSuchStudentException if a matching student could not be found
+	 */
+	public static Student findByFirstName_Last(
+			long groupId, String firstName,
+			OrderByComparator<Student> orderByComparator)
+		throws com.liferay.student.exception.NoSuchStudentException {
+
+		return getPersistence().findByFirstName_Last(
+			groupId, firstName, orderByComparator);
+	}
+
+	/**
+	 * Returns the last student in the ordered set where groupId = &#63; and firstName = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching student, or <code>null</code> if a matching student could not be found
+	 */
+	public static Student fetchByFirstName_Last(
+		long groupId, String firstName,
+		OrderByComparator<Student> orderByComparator) {
+
+		return getPersistence().fetchByFirstName_Last(
+			groupId, firstName, orderByComparator);
+	}
+
+	/**
+	 * Returns the students before and after the current student in the ordered set where groupId = &#63; and firstName = &#63;.
+	 *
+	 * @param studentId the primary key of the current student
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next student
+	 * @throws NoSuchStudentException if a student with the primary key could not be found
+	 */
+	public static Student[] findByFirstName_PrevAndNext(
+			long studentId, long groupId, String firstName,
+			OrderByComparator<Student> orderByComparator)
+		throws com.liferay.student.exception.NoSuchStudentException {
+
+		return getPersistence().findByFirstName_PrevAndNext(
+			studentId, groupId, firstName, orderByComparator);
+	}
+
+	/**
+	 * Removes all the students where groupId = &#63; and firstName = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 */
+	public static void removeByFirstName(long groupId, String firstName) {
+		getPersistence().removeByFirstName(groupId, firstName);
+	}
+
+	/**
+	 * Returns the number of students where groupId = &#63; and firstName = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param firstName the first name
+	 * @return the number of matching students
+	 */
+	public static int countByFirstName(long groupId, String firstName) {
+		return getPersistence().countByFirstName(groupId, firstName);
+	}
+
+	/**
 	 * Caches the student in the entity cache if it is enabled.
 	 *
 	 * @param student the student

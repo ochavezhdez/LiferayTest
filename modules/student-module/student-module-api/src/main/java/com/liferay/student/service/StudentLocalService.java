@@ -284,6 +284,10 @@ public interface StudentLocalService
 	public List<Student> getStudents(
 		long groupId, int start, int end, OrderByComparator<Student> obc);
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Student> getStudents(
+		long groupId, String firstName, int start, int end);
+
 	/**
 	 * Returns all the students matching the UUID and company.
 	 *

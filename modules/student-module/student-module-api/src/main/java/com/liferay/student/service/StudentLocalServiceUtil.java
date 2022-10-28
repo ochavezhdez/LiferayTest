@@ -313,6 +313,12 @@ public class StudentLocalServiceUtil {
 		return getService().getStudents(groupId, start, end, obc);
 	}
 
+	public static List<Student> getStudents(
+		long groupId, String firstName, int start, int end) {
+
+		return getService().getStudents(groupId, firstName, start, end);
+	}
+
 	/**
 	 * Returns all the students matching the UUID and company.
 	 *

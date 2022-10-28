@@ -46,6 +46,11 @@
 		<finder name="GroupId" return-type="Collection">
 			<finder-column name="groupId" />
 		</finder>
+		
+		<finder name="FirstName" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="firstName" case-sensitive="" />
+		</finder>
 
 		<!-- References -->
 

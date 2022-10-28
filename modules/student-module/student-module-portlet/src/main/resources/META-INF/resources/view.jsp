@@ -32,7 +32,7 @@
 <liferay-ui:search-container emptyResultsMessage="Students don't found"
 	total="${ studentSearch.getStudentsCount() }">
 	<liferay-ui:search-container-results
-		results="${ studentSearch.getStudents(searchContainer.getStart(), searchContainer.getEnd()) }" />
+		results="${ studentSearch.getStudents(scopeGroupId.longValue(), searchContainer.getStart(), searchContainer.getEnd()) }" />
 	<liferay-ui:search-container-row
 		className="com.liferay.student.model.Student" escapedModel="true"
 		keyProperty="studentId" modelVar="student">
